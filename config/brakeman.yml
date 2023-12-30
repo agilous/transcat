@@ -1,0 +1,8 @@
+---
+:rails3: false
+:rails4: false
+:rails5: false
+:rails6: false
+:rails7: true
+:quiet: true
+:summary_only: :no_summary

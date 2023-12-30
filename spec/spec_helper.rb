@@ -91,4 +91,15 @@ RSpec.configure do |config|
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
+
+  config.before(:each, type: :feature) do |example|
+    # Available drivers :rack_test, :selenium, :selenium_headless, :selenium_chrome, :selenium_chrome_headless
+    javascript_driver = example.metadata[:js_driver] || ENV.fetch('JAVASCRIPT_DRIVER', :selenium_headless).to_sym
+    Capybara.current_driver = javascript_driver
+    Capybara.server = :puma, { Silent: true }
+  end
+
+  config.after(:each, type: :feature) do
+    Capybara.use_default_driver
+  end
 end

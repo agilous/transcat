@@ -18,10 +18,15 @@ Dir.chdir(APP_ROOT) do
   ruby_linting_passed = system("bin/rubocop")
   terminal_message("Done.\n\n")
 
+  terminal_message("Running Brakeman Scan...")
+  brakeman_passed = system("bin/brakeman")
+  terminal_message("Done.\n\n")
+
   pass_fail(ruby_tests_passed, "Ruby Tests")
   pass_fail(ruby_linting_passed, "Ruby Linter")
+  pass_fail(brakeman_passed, "Brakeman Scan")
 
-  return 1 unless ruby_tests_passed && ruby_linting_passed
+  return 1 unless ruby_tests_passed && ruby_linting_passed && brakeman_passed
 
   return 0
 end

@@ -1,5 +1,6 @@
 require:
   - rubocop-capybara
+  - rubocop-factory_bot
   - rubocop-performance
   - rubocop-rspec
   - rubocop-rails
@@ -13,6 +14,9 @@ AllCops:
     - node_modules/**/*
     - lib/tasks/*
   NewCops: enable
+
+Rails/I18nLocaleTexts:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
