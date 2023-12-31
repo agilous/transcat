@@ -5,8 +5,7 @@ A simple [Rails](https://rubyonrails.org/) application that categorizes banking 
 
 ## Dependencies
 * [asdf](https://asdf-vm.com/#/)
-* [Ruby](https://www.ruby-lang.org/en/) 3.2.2
-* [Rails](https://rubyonrails.org/) 7.2.0
+* [PostgreSQL](https://www.postgresql.org/) - Tested with PostgreSQL 14 but earlier versions should work.
 
 ## Setup
 Check out the code:
@@ -16,6 +15,7 @@ git clone git@github.com:agilous/transcat.git
 On a * nix environment, just run:
 ```sh
 cd transcat # presuming you ran the command above and did not rename the directory
+asdf install
 ./bin/setup
 ```
 and you should be setup to go.
