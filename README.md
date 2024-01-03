@@ -1,5 +1,6 @@
 # TransactionCategorization Rails App
 A simple [Rails](https://rubyonrails.org/) application that categorizes banking transaction via Machine Learning (AI).
+Here's the [Roadmap](./ROADMAP.md) detailing development plans.
 
 ![Build Status](https://github.com/agilous/transcat/actions/workflows/ci.yml/badge.svg)
 
