@@ -6,6 +6,7 @@ on:
     branches: [ "main" ]
 jobs:
   test:
+    permissions: write-all
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -31,20 +32,14 @@ jobs:
       - name: Set up database schema
         run: bin/rails db:schema:load
       # Add or replace test runners here
-      - name: Run specs
+      - name: Run Tests
         run: bin/rspec
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@v1
+      - uses: joshmfrankel/simplecov-check-action@main
         with:
-          bundler-cache: true
-      # Add or replace any other lints here
-      - name: Security audit application code
-        run: bin/brakeman
-      - name: Lint Ruby files
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          minimum_suite_coverage: 95
+
+      - name: Ruby Linter
         run: bin/rubocop --parallel
+      - name: Brakeman Scan
+        run: bin/brakeman

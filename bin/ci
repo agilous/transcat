@@ -22,11 +22,16 @@ Dir.chdir(APP_ROOT) do
   brakeman_passed = system("bin/brakeman")
   terminal_message("Done.\n\n")
 
+  terminal_message("Checking Code Coverage...")
+  coverage_passed = system("bin/coverage")
+  terminal_message("Done.\n\n")
+
   pass_fail(ruby_tests_passed, "Ruby Tests")
   pass_fail(ruby_linting_passed, "Ruby Linter")
   pass_fail(brakeman_passed, "Brakeman Scan")
+  pass_fail(coverage_passed, "Code Coverage")
 
-  return 1 unless ruby_tests_passed && ruby_linting_passed && brakeman_passed
+  return 1 unless ruby_tests_passed && ruby_linting_passed && brakeman_passed && coverage_passed
 
   return 0
 end

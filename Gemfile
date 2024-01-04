@@ -21,6 +21,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'solargraph'
   gem 'web-console'
 end
 
@@ -35,5 +36,7 @@ group :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false
+  gem 'simplecov-json', require: false
   gem 'webdrivers'
 end
