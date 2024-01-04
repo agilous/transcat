@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+require 'json'
+
+MINIMUM_COVERAGE = 95
+
+coverage_report_path = "#{Dir.pwd}/coverage/.last_run.json"
+if File.exist?(coverage_report_path)
+  coverage_data = JSON.parse(File.read(coverage_report_path))
+  coverage_percentage = coverage_data['result']['line']
+
+  if coverage_percentage >= MINIMUM_COVERAGE
+    puts "🥳 Awesome coverage (#{coverage_percentage}%)!\n"
+    exit 0
+  else
+    puts "😥 Coverage insufficient (#{coverage_percentage}%).\n"
+    exit 1
+  end
+else
+  puts "Coverage report not found.\n"
+  exit 1
+end
